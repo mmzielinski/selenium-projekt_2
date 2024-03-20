@@ -8,25 +8,20 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoggedUserPage {
 
-    @FindBy(id = "username")
-    private WebElement inputLogEmail;
+    @FindBy(linkText = "Dashboard")
+    private WebElement dashboardLink;
 
-    @FindBy(id = "password")
-    private WebElement inputLogPassword;
 
-    @FindBy(name = "login")
-    private WebElement logInButton;
-
+    private WebDriver driver;
 
     public LoggedUserPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
 
-    public void loginUser(String email, String password) {
-        inputLogEmail.sendKeys(email);
-        inputLogPassword.sendKeys(password);
-        logInButton.click();
+    public WebElement getDashboardLink() {
+        return dashboardLink;
     }
 
 
