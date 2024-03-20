@@ -17,6 +17,9 @@ public class MyAccountPage {
     @FindBy(name = "register")
     private WebElement clickRegButton;
 
+    @FindBy (linkText = "Dashboard")
+    private WebElement dashboardLink;
+
 
     public MyAccountPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -27,5 +30,9 @@ public class MyAccountPage {
         inputRegEmail.sendKeys(email);
         inputRegPassword.sendKeys(password);
         clickRegButton.click();
+    }
+
+    public WebElement getDashboardLink() {
+        return dashboardLink;
     }
 }

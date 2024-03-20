@@ -28,4 +28,6 @@ public class LoggedUserPage {
         inputLogPassword.sendKeys(password);
         logInButton.click();
     }
+
+
 }
