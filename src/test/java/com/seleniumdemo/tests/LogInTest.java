@@ -9,17 +9,15 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class RegisterTest extends BaseTest {
+public class LogInTest extends BaseTest {
 
     @Test
-    public void registerUserTest() {
+    public void logInTest() {
         HomePage homePage = new HomePage(driver);
         homePage.openMyAccountPage();
 
         MyAccountPage myAccountPage = new MyAccountPage(driver);
-        int random = (int) (Math.random() * 1000);
-        String email = "test" + random + "@testerski.pl";
-        myAccountPage.registerUserValidData(email, "test@testerski.pl");
+        myAccountPage.logInValidData("test1@testerski.pl", "test1@testerski.pl");
 
         LoggedUserPage loggedUserPage = new LoggedUserPage(driver);
         WebElement dashboardLink = loggedUserPage.getDashboardLink();
@@ -28,14 +26,14 @@ public class RegisterTest extends BaseTest {
 
 
     @Test
-    public void registerUserWithSameEmailTest() {
+    public void logInWithInvalidPasswordlTest() {
         HomePage homePage = new HomePage(driver);
         homePage.openMyAccountPage();
 
         MyAccountPage myAccountPage = new MyAccountPage(driver);
-        myAccountPage.registerUserInvalidData("test1@testerski.pl", "test@testerski.pl");
+        myAccountPage.logInInvalidData("test1@testerski.pl", "bledne-haslo");
 
         WebElement error = myAccountPage.getError();
-        Assert.assertTrue(error.getText().contains("An account is already registered with your email address"));
+        Assert.assertTrue(error.getText().contains("Incorrect username or password."));
     }
 }

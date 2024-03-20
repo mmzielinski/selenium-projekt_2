@@ -44,7 +44,7 @@ public class MyAccountPage {
         clickRegButton.click();
     }
 
-    public WebElement getError(){
+    public WebElement getError() {
         return error;
     }
 
