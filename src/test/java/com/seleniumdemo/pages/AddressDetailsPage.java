@@ -1,6 +1,8 @@
 package com.seleniumdemo.pages;
 
 import com.seleniumdemo.models.Customer;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -42,7 +44,7 @@ public class AddressDetailsPage {
     private WebDriver driver;
 
     public AddressDetailsPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
@@ -56,6 +58,13 @@ public class AddressDetailsPage {
         inputCity.sendKeys(customer.getCity());
         inputPhone.sendKeys(customer.getPhone());
         inputEmail.sendKeys(customer.getEmail());
+
+        try {
+            placeOrderButton.click();
+        } catch (StaleElementReferenceException e) {
+            placeOrderButton = driver.findElement(By.id("place_order"));
+        }
+
         placeOrderButton.click();
         return new OrderDetailsPage(driver);
     }
