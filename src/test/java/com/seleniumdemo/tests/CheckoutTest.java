@@ -30,8 +30,5 @@ public class CheckoutTest extends BaseTest {
         OrderDetailsPage orderDetailsPage = new OrderDetailsPage(driver);
         orderDetailsPage.getProductName();
         Assert.assertEquals(orderDetailsPage.getProductName().getText(), "Java Selenium WebDriver  × 1");
-
-
-
     }
 }
