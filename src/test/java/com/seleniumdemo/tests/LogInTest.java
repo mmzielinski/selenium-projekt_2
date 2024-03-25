@@ -17,7 +17,7 @@ public class LogInTest extends BaseTest {
         homePage.openMyAccountPage();
 
         MyAccountPage myAccountPage = new MyAccountPage(driver);
-        myAccountPage.logInValidData("test1@testerski.pl", "test1@testerski.pl");
+        myAccountPage.logInValidData("test919@testerski.pl", "test@testerski.pl");
 
         LoggedUserPage loggedUserPage = new LoggedUserPage(driver);
         WebElement dashboardLink = loggedUserPage.getDashboardLink();

@@ -74,6 +74,4 @@ public class MyAccountPage {
         logIn(username, password);
         return this;
     }
-
-
 }
